@@ -1,5 +1,5 @@
 - [ ] Make into multimodule
-- [ ] Add .editorconfig
+- [x] Add .editorconfig
 - [ ] Add checkstyle
 - [ ] Test coverage
 - [ ] Gradle dependencies check
