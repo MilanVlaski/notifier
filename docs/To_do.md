@@ -1,6 +1,6 @@
-- [ ] Make into multimodule
+- [x] Make into multimodule
 - [x] Add .editorconfig
-- [ ] Add checkstyle
+- [x] Add checkstyle
 - [ ] Test coverage
 - [ ] Gradle dependencies check
 - [ ] Create build script
