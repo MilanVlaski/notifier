@@ -4,6 +4,9 @@ plugins {
     jacoco
 }
 
+group = "com.akimi"
+version = "0.0.1-SNAPSHOT"
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
@@ -22,9 +25,22 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.test {
-    finalizedBy(tasks.jacocoTestReport)
+// Required for jacoco aggregation
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
+    }
 }
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
-}
+
+// Uncomment, if you need to see test coverage reports for subprojects.
+// Currently, an aggregate report is enough.
+//tasks.test {
+//    // On all test tasks, create test report
+//    finalizedBy(tasks.jacocoTestReport)
+//}
+//tasks.jacocoTestReport {
+//    // Generate test coverage reports for subprojects
+//    dependsOn(tasks.test)
+//}
