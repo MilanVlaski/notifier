@@ -38,7 +38,7 @@ jobs:
         uses: cicirello/jacoco-badge-generator@v2
         with:
           jacoco-csv-file: coverage-report/target/site/jacoco-aggregate/jacoco.csv
-          generate-coverage-badge: false
+          generate-coverage-badge: true
           generate-branches-badge: true
           branches-label: "Test Coverage"
 
