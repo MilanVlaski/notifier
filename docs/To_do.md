@@ -1,8 +1,7 @@
 - [x] Make into multimodule
 - [x] Add .editorconfig
 - [x] Add checkstyle
-- [ ] Test coverage
-- [ ] Gradle dependencies check
-- [ ] Create build script
+- [x] Test coverage
+- [x] Create build script
 - [ ] Recreate cloud env
 - [ ] Create deploy script
