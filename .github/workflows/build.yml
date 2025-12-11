@@ -28,10 +28,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-          cache: maven
+          cache: gradle
 
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --stack-trace
 
       # Generate coverage badges (instructions + branches)
       - name: Generate JaCoCo Badges
