@@ -31,7 +31,7 @@ jobs:
           cache: gradle
 
       - name: Build
-        run: ./gradlew build --stack-trace
+        run: ./gradlew build --stacktrace
 
       # Generate coverage badges (instructions + branches)
       - name: Generate JaCoCo Badges
