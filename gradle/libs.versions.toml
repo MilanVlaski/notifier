@@ -2,7 +2,7 @@
 spring = "4.0.0"
 
 [libraries]
-spring-boot-deps = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring"}
+spring-boot-deps = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring" }
 
 [plugins]
-spring-boot = {id = "org.springframework.boot", version.ref = "spring"}
+spring-boot = { id = "org.springframework.boot", version.ref = "spring" }
