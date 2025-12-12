@@ -34,6 +34,13 @@ testing {
     }
 }
 
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(true)
+    }
+}
+
 // Uncomment, if you need to see test coverage reports for subprojects.
 // Currently, an aggregate report is enough.
 //tasks.test {
@@ -44,10 +51,3 @@ testing {
 //    // Generate test coverage reports for subprojects
 //    dependsOn(tasks.test)
 //}
-
-tasks.jacocoTestReport {
-    reports {
-        xml.required.set(true)
-        csv.required.set(true)
-    }
-}

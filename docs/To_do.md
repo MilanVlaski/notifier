@@ -4,4 +4,7 @@
 - [x] Test coverage
 - [x] Create build script
 - [ ] Recreate cloud env
+- [ ] ^Add Spring health check
 - [ ] Create deploy script
+- [ ] ^With health check/smoke test
+- [ ] 
