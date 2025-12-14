@@ -1,4 +1,4 @@
-package com.akimi.notifier;
+package com.akimi.notifier.web;
 
 import org.junit.jupiter.api.Test;
 

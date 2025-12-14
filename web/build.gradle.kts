@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.spring.boot)
 }
 
-description = "Message "
+description = "Notifier web app."
 
 dependencies {
     // Recommended over Spring Dependency management by the creator, see: https://www.linen.dev/s/gradle-community/t/2579116/what-is-the-proper-way-to-apply-a-bom-in-a-library-project-i#a7d4a60a-ab60-48dc-8477-f3f4462d1e6a
