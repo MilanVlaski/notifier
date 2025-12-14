@@ -1,9 +1,16 @@
 <img height="50" alt="Love Letter" src="https://github.com/user-attachments/assets/e825d3ff-d7ad-40cf-8570-8fd32d650afb" />
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+<<<<<<< Updated upstream
 ![Build](https://img.shields.io/github/actions/workflow/status/MilanVlaski/notifier/build.yml?branch=main)
 ![Test Coverage](https://raw.githubusercontent.com/MilanVlaski/notifier/coverage-badges/.github/badges/branches.svg)  
 A notification service. Send *authenticated* notification requests, to clients, using different protocols, like email or HTTP.
+=======
+![Build](https://img.shields.io/github/actions/workflow/status/MilanVlaski/notifier/ci.yml?branch=main)
+![Test Coverage](https://raw.githubusercontent.com/MilanVlaski/notifier/coverage-badges/.github/badges/branches.svg)
+
+A notification service. Send *authenticated* notification requests, to clients, using different protocols.
+>>>>>>> Stashed changes
 
 ## How to run?
 - `./gradlew :web:bootRun`
