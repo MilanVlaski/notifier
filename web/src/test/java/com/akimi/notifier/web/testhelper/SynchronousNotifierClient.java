@@ -33,7 +33,8 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
         );
 
         HttpPost post = new HttpPost("http://localhost:8080/send");
-        post.setEntity(new StringEntity(mapper.writeValueAsString(req), ContentType.APPLICATION_JSON));
+        post.setEntity(new StringEntity(mapper.writeValueAsString(req),
+                ContentType.APPLICATION_JSON));
 
         makeRequest(post);
     }
@@ -43,20 +44,20 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
             var response = client.execute(post);
 
             if (!(response.getCode() >= 200 && response.getCode() <= 300)) {
-                throw new RuntimeException("Failure status code: " + response.getCode() + "." +
-                        " Body: " + EntityUtils.toString(response.getEntity()));
+                throw new RuntimeException("Failure status code: " + response.getCode()
+                        + ". Body: " + EntityUtils.toString(response.getEntity()));
             }
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setUp(String host, int emailPort) {
+    public void setUp(String host, int emailPort, String appPort) {
         if (context != null) {
             return;
         }
 
-        System.setProperty("PORT", "8080");
+        System.setProperty("PORT", appPort);
         context = new SpringApplicationBuilder(NotifierApplication.class)
                 .run(
                         "--spring.profiles.active=prod,insecure",

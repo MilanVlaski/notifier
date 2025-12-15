@@ -16,7 +16,7 @@ public class NotifierApplicationTest {
     @BeforeEach
     public void setUp() {
         recipient.setUp(EMAIL_PORT, HTTP_TEST_PORT);
-        app.setUp(recipient.smtpHost(), recipient.smtpPort());
+        app.setUp(recipient.smtpHost(), recipient.smtpPort(), "8080");
     }
 
     @Test
