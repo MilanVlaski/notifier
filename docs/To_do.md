@@ -2,11 +2,9 @@
 - [x] Add .editorconfig
 - [x] Add checkstyle
 - [x] Test coverage
-<<<<<<< Updated upstream
-=======
 - [x] Gradle dependencies check
->>>>>>> Stashed changes
 - [x] Create build script
+- [ ] Make email configuration in `application.properties`
 - [ ] Recreate cloud env
 - [ ] ^Add Spring health check
 - [ ] Create deploy script

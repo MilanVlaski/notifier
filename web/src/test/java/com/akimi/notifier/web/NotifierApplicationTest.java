@@ -13,14 +13,13 @@ public class NotifierApplicationTest {
 
     @BeforeEach
     public void setUp() {
-        app.setUp();
         recipient.setUp();
+        app.setUp();
     }
 
     @Test
-    @Disabled
     public void Sends_email_to_mailhog_server() {
-        var message = new Message("Hello!");
+        var message = new Message("Hello!", "bla");
         app.requestNotification(Channel.EMAIL, to, message);
         recipient.hasReceivedMessage(message);
     }

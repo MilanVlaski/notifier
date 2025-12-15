@@ -22,7 +22,7 @@ public class ApiTest {
         when(fakeNotificationSender.channel()).thenReturn(Channel.EMAIL);
 
         var to = new To("franklin@gmail.com");
-        var message = new Message("Hello!");
+        var message = new Message("Hello!", "Msg");
         notifier.requestNotification(Channel.EMAIL, to, message);
 
         verify(fakeNotificationSender).sendNotification(to, message);

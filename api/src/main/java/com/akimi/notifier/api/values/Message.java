@@ -1,4 +1,4 @@
 package com.akimi.notifier.api.values;
 
-public record Message(String message) {
+public record Message(String subject, String body) {
 }
