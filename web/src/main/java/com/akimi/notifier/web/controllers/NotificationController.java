@@ -13,7 +13,6 @@ public class NotificationController {
 
     private final ForRequestingNotifications notifier;
 
-    @Autowired
     public NotificationController(ForRequestingNotifications notifier) {
         this.notifier = notifier;
     }

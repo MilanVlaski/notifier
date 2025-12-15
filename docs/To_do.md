@@ -13,4 +13,4 @@
   - [ ] Quick refresher on what the code *could* look like for JWT 
   - [ ] JWT
   - [ ] GCloud IAM
-- [ ] 
+- [ ] A nice convention for spring boot is, for each bean that you need in production, and that relies on some lower level protocol that can't be ran "raw" or locally, you want to create a "NoOp" bean, because it will allow the app to somehow execute, even if the dependency is not there. A good side effect of that is that you can have property files which are separate. You can also have your app be runnable locally, without any need for hacking. 

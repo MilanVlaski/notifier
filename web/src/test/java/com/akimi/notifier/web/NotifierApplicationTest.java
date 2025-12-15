@@ -9,12 +9,14 @@ public class NotifierApplicationTest {
 
     final SynchronousNotifierClient app = new SynchronousNotifierClient();
     final To to = new To("milan@gmail.com");
+    private static final int HTTP_TEST_PORT = 8025;
+    private static final int EMAIL_PORT = 1025;
     final MailhogServer recipient = new MailhogServer();
 
     @BeforeEach
     public void setUp() {
-        recipient.setUp();
-        app.setUp();
+        recipient.setUp(EMAIL_PORT, HTTP_TEST_PORT);
+        app.setUp(recipient.smtpHost(), recipient.smtpPort());
     }
 
     @Test

@@ -8,8 +8,6 @@ import com.akimi.notifier.web.NotifierApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class SynchronousNotifierClient implements ForRequestingNotifications {
 
@@ -21,23 +19,17 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
         notifier.requestNotification(channel, to, message);
     }
 
-    public void setUp() {
+    public void setUp(String host, int emailPort) {
         if (context != null) {
             return;
         }
 
-        String smtpHost = System.getProperty("notifier.smtp.host", "localhost");
-        String smtpPort = System.getProperty("notifier.smtp.port", "1025");
-
-        // TODO nonsense?
-        Map<String, Object> props = new HashMap<>();
-        props.put("spring.main.web-application-type", "none");
-        props.put("spring.mail.host", smtpHost);
-        props.put("spring.mail.port", smtpPort);
-
         context = new SpringApplicationBuilder(NotifierApplication.class)
-                .properties(props)
-                .run();
+                .run(
+                        "--spring.profiles.active=prod",
+                        "--spring.mail.host=" + host,
+                        "--spring.mail.port=" + emailPort
+                );
 
         notifier = context.getBean(ForRequestingNotifications.class);
     }
@@ -45,8 +37,6 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
     public void tearDown() {
         if (context != null) {
             context.close();
-            context = null;
-            notifier = null;
         }
     }
 

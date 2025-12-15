@@ -1,6 +1,7 @@
 package com.akimi.notifier.web.testhelper;
 
 import com.akimi.notifier.api.values.Message;
+
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
@@ -13,22 +14,20 @@ public class MailhogServer {
 
     private GenericContainer<?> mailhog;
     private String httpBase;
+    private String smtpHost;
+    private int smtpPort;
 
-    public void setUp() {
+    public void setUp(int emailPort, int httpTestPort) {
         mailhog = new GenericContainer<>(DockerImageName.parse("mailhog/mailhog:latest"))
-                .withExposedPorts(1025, 8025);
+                .withExposedPorts(emailPort, httpTestPort);
         mailhog.start();
 
         String host = mailhog.getHost();
-        Integer smtpPort = mailhog.getMappedPort(1025);
-        Integer httpPort = mailhog.getMappedPort(8025);
+        Integer smtpPort = mailhog.getMappedPort(emailPort);
+        Integer httpPort = mailhog.getMappedPort(httpTestPort);
+        this.smtpHost = host;
+        this.smtpPort = smtpPort;
         this.httpBase = "http://" + host + ":" + httpPort;
-
-        // TODO nonsense
-        // Make SMTP settings visible to the client which will boot Spring
-        System.setProperty("notifier.smtp.host", host);
-        System.setProperty("notifier.smtp.port", smtpPort.toString());
-        System.setProperty("notifier.mailhog.http.base", this.httpBase);
     }
 
     public void hasReceivedMessage(Message message) {
@@ -64,16 +63,17 @@ public class MailhogServer {
         throw new RuntimeException("Message has not been received.");
     }
 
+    public String smtpHost() {
+        return smtpHost;
+    }
+
+    public int smtpPort() {
+        return smtpPort;
+    }
+
     public void tearDown() {
         if (mailhog != null) {
-            try {
-                mailhog.stop();
-            } finally {
-                mailhog = null;
-            }
+            mailhog.stop();
         }
-        System.clearProperty("notifier.smtp.host");
-        System.clearProperty("notifier.smtp.port");
-        System.clearProperty("notifier.mailhog.http.base");
     }
 }
