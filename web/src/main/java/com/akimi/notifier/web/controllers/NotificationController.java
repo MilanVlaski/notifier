@@ -19,12 +19,14 @@ public class NotificationController {
 
     @PostMapping("/send")
     public ResponseEntity<Void> sendNotification(
-            @RequestBody Channel channel,
-            @RequestBody Message message,
-            @RequestBody To to
+            @RequestBody NotificationRequest request
     ) {
-        notifier.requestNotification(channel, to, message);
+        notifier.requestNotification(request.channel, request.to, request.message);
         return ResponseEntity.accepted().build();
+    }
+
+    public record NotificationRequest(Channel channel, Message message, To to) {
+
     }
 
 }
