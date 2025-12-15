@@ -3,7 +3,6 @@ package com.akimi.notifier.web.controllers;
 import com.akimi.notifier.api.inbound.*;
 import com.akimi.notifier.api.values.*;
 
-import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +20,11 @@ public class NotificationController {
     public ResponseEntity<Void> sendNotification(
             @RequestBody NotificationRequest request
     ) {
-        notifier.requestNotification(request.channel, request.to, request.message);
+        notifier.requestNotification(request.channel, request.from, request.to, request.message);
         return ResponseEntity.accepted().build();
     }
 
-    public record NotificationRequest(Channel channel, Message message, To to) {
+    public record NotificationRequest(Channel channel, From from, To to, Message message) {
 
     }
 

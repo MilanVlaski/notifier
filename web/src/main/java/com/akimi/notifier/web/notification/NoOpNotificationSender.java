@@ -11,7 +11,7 @@ import org.springframework.stereotype.*;
 @Profile("!prod")
 public class NoOpNotificationSender implements ForSendingNotifications {
     @Override
-    public void sendNotification(To to, Message message) {
+    public void sendNotification(From from, To to, Message message) {
 
     }
 

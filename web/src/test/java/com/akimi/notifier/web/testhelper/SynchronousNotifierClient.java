@@ -26,10 +26,10 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
     private ConfigurableApplicationContext context;
 
     @Override
-    public void requestNotification(Channel channel, To to, Message message) {
+    public void requestNotification(Channel channel, From from, To to, Message message) {
         var mapper = new ObjectMapper();
         var req = new NotificationController.NotificationRequest(
-                channel, message, to
+                channel, from, to, message
         );
 
         HttpPost post = new HttpPost("http://localhost:8080/send");

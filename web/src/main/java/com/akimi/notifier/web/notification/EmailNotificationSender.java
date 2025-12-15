@@ -2,6 +2,7 @@ package com.akimi.notifier.web.notification;
 
 import com.akimi.notifier.api.outbound.ForSendingNotifications;
 import com.akimi.notifier.api.values.Channel;
+import com.akimi.notifier.api.values.From;
 import com.akimi.notifier.api.values.Message;
 import com.akimi.notifier.api.values.To;
 
@@ -21,9 +22,9 @@ public class EmailNotificationSender implements ForSendingNotifications {
     }
 
     @Override
-    public void sendNotification(To to, Message message) {
+    public void sendNotification(From from, To to, Message message) {
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setFrom("no-reply@notifier.local");
+        mail.setFrom(from.email());
         mail.setTo(to.email());
         mail.setSubject(message.subject());
         mail.setText(message.body());

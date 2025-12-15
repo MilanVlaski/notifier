@@ -11,10 +11,10 @@ public class Broker {
     }
 
 
-    public void breakMessage(Channel channel, To to, Message message) {
+    public void breakMessage(Channel channel, From from, To to, Message message) {
         var sender = findSenderForChannel(channel);
         if (sender != null) {
-            sender.sendNotification(to, message);
+            sender.sendNotification(from, to, message);
         } else {
            throw new RuntimeException("Sender not found for channel " + channel);
         }
