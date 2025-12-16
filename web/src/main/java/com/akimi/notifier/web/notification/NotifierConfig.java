@@ -40,6 +40,6 @@ public class NotifierConfig {
     @Bean
     @Profile("!prod")
     public ForSendingNotifications defaultNotificationSender() {
-        return new NoOpNotificationSender();
+        return new FakeEmailNotificationSender();
     }
 }
