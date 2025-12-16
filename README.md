@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Build](https://img.shields.io/github/actions/workflow/status/MilanVlaski/notifier/build.yml?branch=main)
-![Test Coverage](https://raw.githubusercontent.com/MilanVlaski/notifier/coverage-badges/.github/badges/branches.svg)  
+![Test Coverage](https://raw.githubusercontent.com/MilanVlaski/notifier/coverage-badges/.github/badges/jacoco.svg)  
 A notification service. Send *authenticated* notification requests, to clients, using different protocols, like email or HTTP.
 
 ## How to run?
