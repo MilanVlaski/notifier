@@ -5,8 +5,6 @@ import com.akimi.notifier.api.values.*;
 
 import org.junit.jupiter.api.*;
 
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ApiTest {

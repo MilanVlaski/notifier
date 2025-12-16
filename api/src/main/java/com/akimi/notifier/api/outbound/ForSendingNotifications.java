@@ -1,7 +1,6 @@
 package com.akimi.notifier.api.outbound;
 
 
-public interface ForSendingNotifications {
+public interface ForSendingNotifications extends ForValidatingNotifications {
     void sendNotification();
-    void validate();
 }

@@ -1,6 +1,6 @@
 package com.akimi.notifier.web.notification.senders;
 
-import com.akimi.notifier.api.outbound.ForSendingNotifications;
+import com.akimi.notifier.api.outbound.*;
 import com.akimi.notifier.api.values.*;
 
 import org.springframework.mail.SimpleMailMessage;
@@ -28,9 +28,7 @@ public class EmailNotificationSender implements ForSendingNotifications {
 
     @Override
     public void validate() {
-        if (false) {
-            throw new IllegalArgumentException();
-        }
+        new EmailNotificationValidator(notification).validate();
     }
 
 }

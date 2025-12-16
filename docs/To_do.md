@@ -1,4 +1,4 @@
-- [ ] Implement parameterized test, with parameters being the different Notification variant that's sent, and the different implementation of delegate (controlled by property) 
+- [ ] Implement parameterized test with the different implementation of delegate (controlled by property)
 - [ ] Learn about class loading https://chatgpt.com/c/69403899-4c10-8332-a6f2-fb17f8113c41
 - [ ] Learn about Spring Security
 - In the end, it's enough to create a ForSendingNotifications, and define the Notification that it uses. Spring Boot can pick it up, and voila! There will even be tests for it!
