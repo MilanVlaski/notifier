@@ -4,15 +4,25 @@ import com.akimi.notifier.api.inbound.*;
 import com.akimi.notifier.api.outbound.*;
 import com.akimi.notifier.api.values.*;
 
+import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.toMap;
+
 public class Notifier implements ForRequestingNotifications {
 
-    private final ForSendingNotifications[] notificationSenders;
+    private final Map<
+        Class<? extends Notification>, ForSendingNotifications> notificationSenders;
     private final NotificationDelegator delegate;
 
     public Notifier(NotificationDelegator delegate,
-                    ForSendingNotifications... notificationSenders) {
+                    List<ForSendingNotifications> notificationSenders) {
         this.delegate = delegate;
-        this.notificationSenders = notificationSenders;
+        this.notificationSenders = notificationSenders.stream()
+            .collect(
+                toMap(sender -> sender.supportedType(),
+                    sender -> sender)
+            );
     }
 
 
@@ -23,12 +33,12 @@ public class Notifier implements ForRequestingNotifications {
     }
 
     private ForSendingNotifications findSenderForChannel(Notification notification) {
-        for (ForSendingNotifications sender : notificationSenders) {
-            if (sender.supportedType().equals(notification.getClass())) {
-                return sender;
-            }
+        var sender = notificationSenders.get(notification.getClass());
+        if (sender == null) {
+            throw new RuntimeException("Sender not found for channel: "
+                + notification.getClass().getSimpleName());
+        } else {
+            return sender;
         }
-        throw new RuntimeException("Sender not found for channel: "
-            + notification.getClass().getSimpleName());
     }
 }
