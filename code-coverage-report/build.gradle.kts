@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     jacocoAggregation(project(":web"))
+    jacocoAggregation(project(":api"))
 }
 
 repositories {
