@@ -7,7 +7,7 @@ import com.akimi.notifier.api.outbound.*;
  */
 public class BasicNotificationDelegate implements NotificationDelegator {
     @Override
-    public void send(NotificationDelegate delegate) {
-        delegate.send();
+    public void send(Runnable delegate) {
+        delegate.run();
     }
 }

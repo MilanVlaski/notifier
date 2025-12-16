@@ -19,23 +19,9 @@ public class Notifier implements ForRequestingNotifications {
 
     @Override
     public void requestNotification(NotificationRequest request) {
-        // Notification request comes here.
-        // Sender is instantiated with correct notification instance.
-        // var sender = senderSupplier.supply(notificationRequest);
-        // sender.validate();
-        // delegate.send(() -> sender.send());
         var sender = senderFactory.create(request);
 //        var sender = findSenderForChannel(request);
         delegate.send(() -> sender.sendNotification());
     }
 
-//    private ForSendingNotifications findSenderForChannel(Notification notification) {
-//        var sender = senderFactory.get(notification.getClass());
-//        if (sender == null) {
-//            throw new RuntimeException("Sender not found for channel: "
-//                + notification.getClass().getSimpleName());
-//        } else {
-//            return sender;
-//        }
-//    }
 }
