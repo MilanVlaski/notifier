@@ -1,4 +1,4 @@
-package com.akimi.notifier.web.notification;
+package com.akimi.notifier.web.notification.senders;
 
 import com.akimi.notifier.api.outbound.ForSendingNotifications;
 import com.akimi.notifier.api.values.*;
