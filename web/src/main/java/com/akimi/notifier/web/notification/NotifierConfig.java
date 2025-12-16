@@ -10,8 +10,6 @@ import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.*;
 import org.springframework.security.web.*;
 
-import java.util.*;
-
 @Configuration
 public class NotifierConfig {
 
@@ -23,14 +21,6 @@ public class NotifierConfig {
         return new Notifier(notifierDelegate, notificationSenders);
     }
 
-    @Bean
-    @Profile("insecure")
-    public SecurityFilterChain security(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
-        return http.build();
-    }
 
     @Bean
     public NotificationDelegator notifierDelegate() {
@@ -41,5 +31,14 @@ public class NotifierConfig {
     @Profile("!prod")
     public NotificationSenderFactory defaultNotificationSender() {
         return (x) -> new FakeEmailNotificationSender();
+    }
+
+    @Bean
+    @Profile("insecure")
+    public SecurityFilterChain security(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
     }
 }
