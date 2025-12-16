@@ -26,4 +26,11 @@ public class EmailNotificationSender implements ForSendingNotifications {
         mailSender.send(mail);
     }
 
+    @Override
+    public void validate() {
+        if (false) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

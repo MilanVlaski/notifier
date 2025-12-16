@@ -20,7 +20,7 @@ public class Notifier implements ForRequestingNotifications {
     @Override
     public void requestNotification(NotificationRequest request) {
         var sender = senderFactory.create(request);
-//        var sender = findSenderForChannel(request);
+        sender.validate();
         delegate.send(() -> sender.sendNotification());
     }
 
