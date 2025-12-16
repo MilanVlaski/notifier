@@ -4,7 +4,14 @@
 - [x] Test coverage
 - [x] Gradle dependencies check
 - [x] Create build script
-- [ ] Make email configuration in `application.properties`
+- [x] Make email configuration in `application.properties`
+- [ ] Broker takes List of dependencies, creates a map out of it.
+- [ ] The Broker @Bean will receive a List<ForSendingNotification>
+- [ ] The Broker also depends on a NotificationSender(THING), which takes a lambda of the 
+- [ ] The ForSendingNotifications takes a Notification as part of it's interface.
+- [ ] No longer need an enum, though, we can just use instanceof based on the Notification.
+- [ ] Use the Map<? extends Notification, NotificationSender> in Broker.
+- In the end, it's enough to create a ForSendingNotifications, and define the Notification that it uses. Spring Boot can pick it up, and voila! There will even be tests for it!
 - [ ] Recreate cloud env
 - [ ] ^Add Spring health check
 - [ ] Create deploy script

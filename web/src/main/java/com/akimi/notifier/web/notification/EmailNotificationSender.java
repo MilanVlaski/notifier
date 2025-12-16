@@ -1,10 +1,7 @@
 package com.akimi.notifier.web.notification;
 
 import com.akimi.notifier.api.outbound.ForSendingNotifications;
-import com.akimi.notifier.api.values.Channel;
-import com.akimi.notifier.api.values.From;
-import com.akimi.notifier.api.values.Message;
-import com.akimi.notifier.api.values.To;
+import com.akimi.notifier.api.values.*;
 
 import org.springframework.context.annotation.*;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,7 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("prod")
-public class EmailNotificationSender implements ForSendingNotifications {
+public class EmailNotificationSender
+        implements ForSendingNotifications<EmailNotification> {
 
     private final JavaMailSender mailSender;
 
@@ -22,17 +20,18 @@ public class EmailNotificationSender implements ForSendingNotifications {
     }
 
     @Override
-    public void sendNotification(From from, To to, Message message) {
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setFrom(from.email());
-        mail.setTo(to.email());
-        mail.setSubject(message.subject());
-        mail.setText(message.body());
-        mailSender.send(mail);
+    public Class<EmailNotification> supportedType() {
+        return EmailNotification.class;
     }
 
     @Override
-    public Channel channel() {
-        return Channel.EMAIL;
+    public void sendNotification(EmailNotification notification) {
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom(notification.from().email());
+        mail.setTo(notification.to().email());
+        mail.setSubject(notification.message().subject());
+        mail.setText(notification.message().body());
+        mailSender.send(mail);
     }
+
 }

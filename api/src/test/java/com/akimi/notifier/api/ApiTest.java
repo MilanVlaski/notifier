@@ -19,13 +19,13 @@ public class ApiTest {
 
     @Test
     public void Send_notification() {
-        when(fakeNotificationSender.channel()).thenReturn(Channel.EMAIL);
+        when(fakeNotificationSender.supportedType()).thenReturn(EmailNotification.class);
 
         var to = new To("franklin@gmail.com");
         var message = new Message("Hello!", "Msg");
         var from = new From("me@email.com");
-        notifier.requestNotification(Channel.EMAIL, from, to, message);
+        notifier.requestNotification(new EmailNotification(from, to, message));
 
-        verify(fakeNotificationSender).sendNotification(from, to, message);
+        verify(fakeNotificationSender).sendNotification(new EmailNotification(from, to, message));
     }
 }

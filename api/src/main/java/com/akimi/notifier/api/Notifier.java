@@ -13,7 +13,7 @@ public class Notifier implements ForRequestingNotifications {
     }
 
     @Override
-    public void requestNotification(Channel channel, From from, To to, Message message) {
-        broker.breakMessage(channel, from, to, message);
+    public void requestNotification(Notification notification) {
+        broker.breakMessage(notification);
     }
 }

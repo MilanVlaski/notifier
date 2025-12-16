@@ -3,9 +3,7 @@ package com.akimi.notifier.web.testhelper;
 
 import com.akimi.notifier.api.inbound.*;
 import com.akimi.notifier.api.values.*;
-import com.akimi.notifier.api.values.Message;
 import com.akimi.notifier.web.*;
-import com.akimi.notifier.web.controllers.*;
 
 
 import org.apache.hc.client5.http.classic.methods.*;
@@ -26,14 +24,11 @@ public class SynchronousNotifierClient implements ForRequestingNotifications {
     private ConfigurableApplicationContext context;
 
     @Override
-    public void requestNotification(Channel channel, From from, To to, Message message) {
+    public void requestNotification(Notification notification) {
         var mapper = new ObjectMapper();
-        var req = new NotificationController.NotificationRequest(
-                channel, from, to, message
-        );
 
-        HttpPost post = new HttpPost("http://localhost:8080/send");
-        post.setEntity(new StringEntity(mapper.writeValueAsString(req),
+        HttpPost post = new HttpPost("http://localhost:8080/notification/email");
+        post.setEntity(new StringEntity(mapper.writeValueAsString(notification),
                 ContentType.APPLICATION_JSON));
 
         makeRequest(post);

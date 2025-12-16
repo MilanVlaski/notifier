@@ -23,7 +23,7 @@ public class NotifierApplicationTest {
         var to = new To("milan@gmail.com");
         var message = new Message("Hello!", "bla");
         var from = new From("me@gmail.com");
-        app.requestNotification(Channel.EMAIL, from, to, message);
+        app.requestNotification(new EmailNotification(from, to, message));
         recipient.hasReceivedMessage(message);
     }
 

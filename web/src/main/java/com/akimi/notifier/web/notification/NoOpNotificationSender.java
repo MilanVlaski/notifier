@@ -11,12 +11,13 @@ import org.springframework.stereotype.*;
 @Profile("!prod")
 public class NoOpNotificationSender implements ForSendingNotifications {
     @Override
-    public void sendNotification(From from, To to, Message message) {
-
+    public Class supportedType() {
+        return EmailNotification.class;
     }
 
     @Override
-    public Channel channel() {
-        return Channel.EMAIL;
+    public void sendNotification(Notification notification) {
+
     }
+
 }
