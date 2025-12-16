@@ -16,9 +16,9 @@ public class NotificationController {
         this.notifier = notifier;
     }
 
-    @PostMapping("/notification/email")
+    @PostMapping("/notification")
     public ResponseEntity<Void> sendNotification(
-            @RequestBody EmailNotification request
+            @RequestBody NotificationRequest request
     ) {
         notifier.requestNotification(request);
         return ResponseEntity.accepted().build();

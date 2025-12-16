@@ -20,10 +20,9 @@ public class NotifierApplicationTest {
 
     @Test
     public void Sends_email_to_mailhog_server() {
-        var to = new To("milan@gmail.com");
         var message = new Message("Hello!", "bla");
-        var from = new From("me@gmail.com");
-        app.sendEmail(new EmailNotification(from, to, message));
+        app.sendEmail(new NotificationRequest(
+                Channel.EMAIL, "me@gmail.com", "milan@gmail.com", message));
         recipient.hasReceivedMessage(message);
     }
 

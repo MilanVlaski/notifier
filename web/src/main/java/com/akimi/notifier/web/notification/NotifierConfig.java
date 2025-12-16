@@ -18,7 +18,7 @@ public class NotifierConfig {
     @Bean
     public ForRequestingNotifications notifier(
             NotificationDelegator notifierDelegate,
-            List<ForSendingNotifications> notificationSenders
+            NotificationSenderFactory notificationSenders
     ) {
         return new Notifier(notifierDelegate, notificationSenders);
     }
@@ -39,7 +39,7 @@ public class NotifierConfig {
 
     @Bean
     @Profile("!prod")
-    public ForSendingNotifications defaultNotificationSender() {
-        return new FakeEmailNotificationSender();
+    public NotificationSenderFactory defaultNotificationSender() {
+        return (x) -> new FakeEmailNotificationSender();
     }
 }

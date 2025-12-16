@@ -22,11 +22,11 @@ public class SynchronousNotifierClient {
 
     private ConfigurableApplicationContext context;
 
-    public void sendEmail(Notification notification) {
+    public void sendEmail(NotificationRequest request) {
         var mapper = new ObjectMapper();
 
-        HttpPost post = new HttpPost("http://localhost:8080/notification/email");
-        post.setEntity(new StringEntity(mapper.writeValueAsString(notification),
+        HttpPost post = new HttpPost("http://localhost:8080/notification");
+        post.setEntity(new StringEntity(mapper.writeValueAsString(request),
                 ContentType.APPLICATION_JSON));
 
         makeRequest(post);
