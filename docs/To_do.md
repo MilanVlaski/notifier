@@ -1,21 +1,6 @@
-- [x] Make into multimodule
-- [x] Add .editorconfig
-- [x] Add checkstyle
-- [x] Test coverage
-- [x] Gradle dependencies check
-- [x] Create build script
-- [x] Make email configuration in `application.properties`
+- [ ] Implement parameterized test, with parameters being the different Notification variant that's sent, and the different implementation of delegate (controlled by property) 
 - [ ] Learn about class loading https://chatgpt.com/c/69403899-4c10-8332-a6f2-fb17f8113c41
 - [ ] Learn about Spring Security
-- [x] Use indirection, that takes a lambda, default being just execute the lambda in Java code.
-  - [ ] Use different implementations based on a property
-    - [ ] Refresh the property in spring with @RefreshScope on the beans and /actuator/refresh .
-- [ ] Broker takes List of dependencies, creates a map out of it.
-- [ ] The Broker @Bean will receive a List<ForSendingNotification>
-- [ ] The Broker also depends on a NotificationSender(THING), which takes a lambda and performs it async or whatever  
-- [x] The ForSendingNotifications takes a Notification as part of it's interface.
-- [x] No longer need an enum, though, we can just use instanceof based on the Notification.
-- [ ] Use the Map<? extends Notification, NotificationSender> in Broker.
 - In the end, it's enough to create a ForSendingNotifications, and define the Notification that it uses. Spring Boot can pick it up, and voila! There will even be tests for it!
 - [ ] Recreate cloud env
 - [ ] ^Add Spring health check
@@ -25,4 +10,20 @@
   - [ ] Quick refresher on what the code *could* look like for JWT 
   - [ ] JWT
   - [ ] GCloud IAM
+- [x] Use indirection, that takes a lambda, default being just execute the lambda in Java code.
+  - [ ] Use different implementations based on a property
+    - [ ] Refresh the property in spring with @RefreshScope on the beans and /actuator/refresh .
+- [x] Make into multimodule
+- [x] Add .editorconfig
+- [x] Add checkstyle
+- [x] Test coverage
+- [x] Gradle dependencies check
+- [x] Create build script
+- [x] Make email configuration in `application.properties`
+- [x] Broker takes List of dependencies, creates a map out of it.
+- [x] The Broker @Bean will receive a List<ForSendingNotification>
+- [x] The Broker also depends on a NotificationSender(THING), which takes a lambda and performs it async or whatever  
+- [x] The ForSendingNotifications takes a Notification as part of it's interface.
+- [x] No longer need an enum, though, we can just use instanceof based on the Notification.
+- [x] Use the Map<? extends Notification, NotificationSender> in Broker.
 - [ ] A nice convention for spring boot is, for each bean that you need in production, and that relies on some lower level protocol that can't be ran "raw" or locally, you want to create a "NoOp" bean, because it will allow the app to somehow execute, even if the dependency is not there. A good side effect of that is that you can have property files which are separate. You can also have your app be runnable locally, without any need for hacking. 
