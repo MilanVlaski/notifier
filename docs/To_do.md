@@ -5,11 +5,16 @@
 - [x] Gradle dependencies check
 - [x] Create build script
 - [x] Make email configuration in `application.properties`
+- [ ] Learn about class loading https://chatgpt.com/c/69403899-4c10-8332-a6f2-fb17f8113c41
+- [ ] Learn about Spring Security
+- [x] Use indirection, that takes a lambda, default being just execute the lambda in Java code.
+  - [ ] Use different implementations based on a property
+    - [ ] Refresh the property in spring with @RefreshScope on the beans and /actuator/refresh .
 - [ ] Broker takes List of dependencies, creates a map out of it.
 - [ ] The Broker @Bean will receive a List<ForSendingNotification>
-- [ ] The Broker also depends on a NotificationSender(THING), which takes a lambda of the 
-- [ ] The ForSendingNotifications takes a Notification as part of it's interface.
-- [ ] No longer need an enum, though, we can just use instanceof based on the Notification.
+- [ ] The Broker also depends on a NotificationSender(THING), which takes a lambda and performs it async or whatever  
+- [x] The ForSendingNotifications takes a Notification as part of it's interface.
+- [x] No longer need an enum, though, we can just use instanceof based on the Notification.
 - [ ] Use the Map<? extends Notification, NotificationSender> in Broker.
 - In the end, it's enough to create a ForSendingNotifications, and define the Notification that it uses. Spring Boot can pick it up, and voila! There will even be tests for it!
 - [ ] Recreate cloud env

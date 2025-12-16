@@ -1,7 +1,6 @@
 package com.akimi.notifier.web.testhelper;
 
 
-import com.akimi.notifier.api.inbound.*;
 import com.akimi.notifier.api.values.*;
 import com.akimi.notifier.web.*;
 
@@ -19,12 +18,11 @@ import tools.jackson.databind.*;
 
 import java.io.*;
 
-public class SynchronousNotifierClient implements ForRequestingNotifications {
+public class SynchronousNotifierClient {
 
     private ConfigurableApplicationContext context;
 
-    @Override
-    public void requestNotification(Notification notification) {
+    public void sendEmail(Notification notification) {
         var mapper = new ObjectMapper();
 
         HttpPost post = new HttpPost("http://localhost:8080/notification/email");
