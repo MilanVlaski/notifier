@@ -1,7 +1,8 @@
 package com.akimi.notifier.web;
 
 import com.akimi.notifier.api.values.*;
-import com.akimi.notifier.web.testhelper.*;
+import com.akimi.notifier.web.testhelper.MailhogServer;
+import com.akimi.notifier.web.testhelper.SynchronousNotifierClient;
 
 import org.junit.jupiter.api.*;
 

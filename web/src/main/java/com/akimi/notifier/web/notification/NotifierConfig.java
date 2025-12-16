@@ -1,14 +1,15 @@
 package com.akimi.notifier.web.notification;
 
-import com.akimi.notifier.api.*;
+import com.akimi.notifier.api.Notifier;
 import com.akimi.notifier.api.inbound.ForRequestingNotifications;
-import com.akimi.notifier.api.outbound.*;
-
-import com.akimi.notifier.api.outbound.defaults.*;
+import com.akimi.notifier.api.outbound.NotificationDelegator;
+import com.akimi.notifier.api.outbound.NotificationSenderFactory;
+import com.akimi.notifier.api.outbound.defaults.BasicNotificationDelegate;
+import com.akimi.notifier.api.outbound.defaults.FakeEmailNotificationSender;
 
 import org.springframework.context.annotation.*;
-import org.springframework.security.config.annotation.web.builders.*;
-import org.springframework.security.web.*;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class NotifierConfig {

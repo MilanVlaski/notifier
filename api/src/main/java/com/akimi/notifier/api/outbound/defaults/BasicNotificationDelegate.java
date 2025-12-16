@@ -1,6 +1,6 @@
 package com.akimi.notifier.api.outbound.defaults;
 
-import com.akimi.notifier.api.outbound.*;
+import com.akimi.notifier.api.outbound.NotificationDelegator;
 
 /**
  * Synchronous implementation that should be available by default.

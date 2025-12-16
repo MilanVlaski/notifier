@@ -1,7 +1,8 @@
 package com.akimi.notifier.web.notification.senders;
 
-import com.akimi.notifier.api.outbound.*;
-import com.akimi.notifier.api.values.*;
+import com.akimi.notifier.api.outbound.EmailNotificationValidator;
+import com.akimi.notifier.api.outbound.ForSendingNotifications;
+import com.akimi.notifier.api.values.EmailNotification;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -11,7 +12,8 @@ public class EmailNotificationSender implements ForSendingNotifications {
     private final JavaMailSender mailSender;
     private final EmailNotification notification;
 
-    public EmailNotificationSender(JavaMailSender mailSender, EmailNotification emailNotification) {
+    public EmailNotificationSender(JavaMailSender mailSender,
+                                   EmailNotification emailNotification) {
         this.mailSender = mailSender;
         this.notification = emailNotification;
     }

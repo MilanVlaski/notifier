@@ -1,14 +1,12 @@
 package com.akimi.notifier.web.testhelper;
 
+import java.net.URI;
+import java.net.http.*;
+
 import com.akimi.notifier.api.values.Message;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 public class MailhogServer {
 

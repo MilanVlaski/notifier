@@ -1,22 +1,23 @@
 package com.akimi.notifier.web.testhelper;
 
 
-import com.akimi.notifier.api.values.*;
-import com.akimi.notifier.web.*;
+import java.io.IOException;
 
+import com.akimi.notifier.api.values.NotificationRequest;
+import com.akimi.notifier.web.NotifierApplication;
 
-import org.apache.hc.client5.http.classic.methods.*;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
-import org.apache.hc.client5.http.impl.classic.*;
-import org.apache.hc.core5.http.*;
-import org.apache.hc.core5.http.io.entity.*;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
-import org.springframework.boot.builder.*;
-import org.springframework.context.*;
-
-import tools.jackson.databind.*;
-
-import java.io.*;
+import tools.jackson.databind.ObjectMapper;
 
 public class SynchronousNotifierClient {
 

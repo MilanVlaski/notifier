@@ -1,9 +1,10 @@
 package com.akimi.notifier.api;
 
-import com.akimi.notifier.api.outbound.defaults.*;
+import com.akimi.notifier.api.outbound.defaults.BasicNotificationDelegate;
+import com.akimi.notifier.api.outbound.defaults.FakeEmailNotificationSender;
 import com.akimi.notifier.api.values.*;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

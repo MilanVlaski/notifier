@@ -1,8 +1,9 @@
 package com.akimi.notifier.api;
 
-import com.akimi.notifier.api.inbound.*;
-import com.akimi.notifier.api.outbound.*;
-import com.akimi.notifier.api.values.*;
+import com.akimi.notifier.api.inbound.ForRequestingNotifications;
+import com.akimi.notifier.api.outbound.NotificationDelegator;
+import com.akimi.notifier.api.outbound.NotificationSenderFactory;
+import com.akimi.notifier.api.values.NotificationRequest;
 
 
 public class Notifier implements ForRequestingNotifications {

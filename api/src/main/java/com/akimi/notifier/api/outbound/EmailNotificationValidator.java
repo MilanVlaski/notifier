@@ -1,6 +1,6 @@
 package com.akimi.notifier.api.outbound;
 
-import com.akimi.notifier.api.values.*;
+import com.akimi.notifier.api.values.EmailNotification;
 
 public class EmailNotificationValidator implements ForValidatingNotifications {
 

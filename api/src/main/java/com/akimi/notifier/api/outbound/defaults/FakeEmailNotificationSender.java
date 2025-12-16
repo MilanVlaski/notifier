@@ -1,6 +1,7 @@
 package com.akimi.notifier.api.outbound.defaults;
 
-import com.akimi.notifier.api.outbound.*;
+
+import com.akimi.notifier.api.outbound.ForSendingNotifications;
 
 // can be made into a generic fake for SMS, etc
 public class FakeEmailNotificationSender implements ForSendingNotifications {
@@ -14,7 +15,7 @@ public class FakeEmailNotificationSender implements ForSendingNotifications {
 
     @Override
     public void validate() {
-
+        // validation always succeeds
     }
 
 }
