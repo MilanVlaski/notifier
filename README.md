@@ -19,5 +19,5 @@ A notification service. Send *authenticated* notification requests, to clients, 
 
 ## How to contribute
 
-1. After making your changes, if the project builds, using `./gradlew build`.
+1. Build the project, using `./gradlew build`.
 2. Submit a pull request.
